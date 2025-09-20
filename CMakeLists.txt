@@ -37,7 +37,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(project main.c src/connection.c)
+add_executable(project main.c src/connection.c src/button.c src/mfrc522.c src/mfrc522_handler.c src/led.c) 
 
 pico_set_program_name(project "project")
 pico_set_program_version(project "0.1")
@@ -48,7 +48,8 @@ pico_enable_stdio_usb(project 1)
 
 # Add the standard library to the build
 target_link_libraries(project
-        pico_stdlib)
+        pico_stdlib
+        hardware_spi)
 
 # Add the standard include files to the build
 target_include_directories(project PRIVATE
